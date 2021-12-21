@@ -5,5 +5,9 @@ module.exports = {
 
   webpack: {
     mode: "development"
+  },
+
+  imagemin: {
+    verbose: true
   }
 }

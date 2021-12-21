@@ -3,8 +3,8 @@ const { src, dest } = require("gulp");
 // Плагины
 const plumber = require("gulp-plumber");
 const notify = require("gulp-notify");
-const babel = require("gulp-babel");
-const webpack = require("webpack-stream");
+const imagemin = require("gulp-imagemin");
+const newer = require("gulp-newer");
 
 
 // Конфигурация
@@ -12,18 +12,18 @@ const path = require("../config/path.js")
 const app = require("../config/app.js")
 
 
-// Обработка JavaScript
-const js = () => {
-  return src(path.js.src, { sourcemaps: true })
+// Обработка IMG
+const img = () => {
+  return src(path.img.src)
     .pipe(plumber({
       errorHandler: notify.onError(error => ({
-        title: "JavaScript",
+        title: "IMG",
         message: error.message
       }))
     }))
-    .pipe(babel())
-    .pipe(webpack(app.webpack))
-    .pipe(dest(path.js.dest, { sourcemaps: true }))
+    .pipe(newer(path.img.dest))
+    .pipe(imagemin(app.imagemin))
+    .pipe(dest(path.img.dest))
 }
 
-module.exports = js;
+module.exports = img;
