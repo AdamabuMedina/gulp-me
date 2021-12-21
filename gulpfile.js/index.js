@@ -20,12 +20,12 @@ const task = requireDir("./task", { recurse: true })
 
 // Наблюдение
 const wathcer = () => {
-  watch($.path.html.watch, task.html).on("all", $.browsersync.reload);
-  watch($.path.scss.watch, task.scss).on("all", $.browsersync.reload);
-  watch($.path.css.watch, task.css).on("all", $.browsersync.reload);
-  watch($.path.js.watch, task.js).on("all", $.browsersync.reload);
-  watch($.path.img.watch, task.img).on("all", $.browsersync.reload);
-  watch($.path.font.watch, task.font).on("all", $.browsersync.reload);
+  $.gulp.watch($.path.html.watch, task.html).on("all", $.browsersync.reload);
+  $.gulp.watch($.path.scss.watch, task.scss).on("all", $.browsersync.reload);
+  $.gulp.watch($.path.css.watch, task.css).on("all", $.browsersync.reload);
+  $.gulp.watch($.path.js.watch, task.js).on("all", $.browsersync.reload);
+  $.gulp.watch($.path.img.watch, task.img).on("all", $.browsersync.reload);
+  $.gulp.watch($.path.font.watch, task.font).on("all", $.browsersync.reload);
 }
 
 const build = $.gulp.series(
