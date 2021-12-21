@@ -34,11 +34,11 @@ const scss = () => {
     .pipe(shorthand())
     .pipe(gcmq())
     .pipe(size({ title: "main.css" }))
-    .pipe(dest(path.scss.dest, { sourcemaps: true }))
+    .pipe(dest(path.scss.dest, { sourcemaps: app.isDev }))
     .pipe(rename({ suffix: ".min" }))
     .pipe(csso())
     .pipe(size({ title: "main.min.css" }))
-    .pipe(dest(path.scss.dest, { sourcemaps: true }))
+    .pipe(dest(path.scss.dest, { sourcemaps: app.isDev }))
 }
 
 module.exports = scss;
