@@ -11,6 +11,7 @@ const shorthand = require("gulp-shorthand");
 const gcmq = require("gulp-group-css-media-queries");
 const plumber = require("gulp-plumber");
 const notify = require("gulp-notify");
+const webpcss = require("gulp-webp-css")
 
 
 // Конфигурация
@@ -29,6 +30,7 @@ const css = () => {
     }))
     .pipe(concat("main.css"))
     .pipe(cssimport())
+    .pipe(webpcss())
     .pipe(autoprefixer())
     .pipe(shorthand())
     .pipe(gcmq())

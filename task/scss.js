@@ -15,6 +15,7 @@ const shorthand = require("gulp-shorthand");
 const gcmq = require("gulp-group-css-media-queries");
 const sass = require("gulp-sass")(require("sass"));
 const sassGlob = require("gulp-sass-glob");
+const webpcss = require("gulp-webp-css")
 
 
 // Обработка SCSS
@@ -28,6 +29,7 @@ const scss = () => {
     }))
     .pipe(sassGlob())
     .pipe(sass({ outputStyle: "compressed" }))
+    .pipe(webpcss())
     .pipe(autoprefixer())
     .pipe(shorthand())
     .pipe(gcmq())
